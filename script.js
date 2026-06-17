@@ -1,9 +1,18 @@
 const canvas = document.querySelector("#skyCanvas");
 const ctx = canvas.getContext("2d");
+const welcomeScreen = document.querySelector("#welcomeScreen");
+const openExperience = document.querySelector("#openExperience");
 const heartCore = document.querySelector("#heartCore");
 const headline = document.querySelector("#headline");
 const nameForm = document.querySelector("#nameForm");
 const nameInput = document.querySelector("#nameInput");
+const dailyLine = document.querySelector("#dailyLine");
+const wishStars = [...document.querySelectorAll(".wish-star")];
+const wishMessage = document.querySelector("#wishMessage");
+const playTiles = [...document.querySelectorAll(".play-tile")];
+const playResult = document.querySelector("#playResult");
+const dateIdeaButtons = [...document.querySelectorAll("[data-date-idea]")];
+const dateChoice = document.querySelector("#dateChoice");
 const datePad = document.querySelector("#datePad");
 const yesBtn = document.querySelector("#yesBtn");
 const noBtn = document.querySelector("#noBtn");
@@ -13,8 +22,18 @@ const signals = [...document.querySelectorAll("[data-signal]")];
 let width = 0;
 let height = 0;
 let pointerX = 0;
-let pointerY = 0;
 let stars = [];
+
+document.body.classList.add("is-locked");
+
+const lines = [
+  "You are not just beautiful. You are the kind of person someone remembers softly.",
+  "You have a way of becoming the best part of a day without even knowing it.",
+  "If my thoughts had a favorite place to go, lately they would keep choosing you.",
+  "Some people are easy to notice. You are hard to forget.",
+];
+
+dailyLine.textContent = lines[new Date().getDate() % lines.length];
 
 const savedName = localStorage.getItem("specialName");
 if (savedName) {
@@ -74,6 +93,12 @@ function burst(x, y, count = 18) {
   }
 }
 
+openExperience.addEventListener("click", () => {
+  welcomeScreen.classList.add("is-open");
+  document.body.classList.remove("is-locked");
+  burst(window.innerWidth / 2, window.innerHeight / 2, 42);
+});
+
 nameForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const name = cleanName(nameInput.value) || "you";
@@ -94,6 +119,34 @@ signals.forEach((signal) => {
   signal.addEventListener("pointerenter", () => {
     signals.forEach((item) => item.classList.remove("is-active"));
     signal.classList.add("is-active");
+  });
+});
+
+wishStars.forEach((star) => {
+  star.addEventListener("click", () => {
+    wishStars.forEach((item) => item.classList.remove("is-lit"));
+    star.classList.add("is-lit");
+    wishMessage.textContent = star.dataset.wish;
+    const box = star.getBoundingClientRect();
+    burst(box.left + box.width / 2, box.top + box.height / 2, 18);
+  });
+});
+
+playTiles.forEach((tile) => {
+  tile.addEventListener("click", () => {
+    playTiles.forEach((item) => item.classList.remove("is-picked"));
+    tile.classList.add("is-picked");
+    playResult.textContent = tile.dataset.play;
+    const box = tile.getBoundingClientRect();
+    burst(box.left + box.width / 2, box.top + box.height / 2, 16);
+  });
+});
+
+dateIdeaButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    dateIdeaButtons.forEach((item) => item.classList.remove("is-selected"));
+    button.classList.add("is-selected");
+    dateChoice.textContent = button.dataset.dateIdea;
   });
 });
 
@@ -123,7 +176,6 @@ yesBtn.addEventListener("click", () => {
 
 window.addEventListener("pointermove", (event) => {
   pointerX = event.clientX;
-  pointerY = event.clientY;
 });
 
 window.addEventListener("resize", resizeCanvas);

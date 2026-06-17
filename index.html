@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="welcome" id="welcomeScreen">
+      <div class="welcome__card">
+        <p class="eyebrow">Private surprise</p>
+        <h2>Before you enter...</h2>
+        <p>This little universe was made slowly, carefully, and only to make you smile.</p>
+        <button id="openExperience" type="button">Open my surprise</button>
+      </div>
+    </div>
+
     <canvas id="skyCanvas" aria-hidden="true"></canvas>
 
     <main class="experience">
@@ -32,17 +41,11 @@
 
         <div class="stage">
           <div class="heart-system" aria-hidden="true">
-            <div class="orbit orbit--one">
-              <span></span>
-            </div>
-            <div class="orbit orbit--two">
-              <span></span>
-            </div>
-            <div class="orbit orbit--three">
-              <span></span>
-            </div>
+            <div class="orbit orbit--one"><span></span></div>
+            <div class="orbit orbit--two"><span></span></div>
+            <div class="orbit orbit--three"><span></span></div>
             <button class="heart-core" id="heartCore" type="button" aria-label="Send love pulse">
-              <span>♥</span>
+              <span>&hearts;</span>
             </button>
           </div>
 
@@ -53,6 +56,11 @@
               I did not want to send a normal message. So I made a little place where every light, every pulse,
               and every word is trying to say the same thing: you are special to me.
             </p>
+
+            <div class="mini-letter">
+              <span>Tonight's honest line</span>
+              <p id="dailyLine">You are not just beautiful. You are the kind of person someone remembers softly.</p>
+            </div>
 
             <form class="name-form" id="nameForm">
               <label for="nameInput">Write her name here</label>
@@ -65,55 +73,90 @@
         </div>
       </section>
 
-      <section class="signals" id="signals" aria-label="Things that make her special">
-        <article class="signal is-active" data-signal>
-          <span>01</span>
-          <h2>The smile signal</h2>
-          <p>Your smile has a way of making everything around it feel warmer.</p>
-        </article>
-        <article class="signal" data-signal>
-          <span>02</span>
-          <h2>The kindness signal</h2>
-          <p>The way you care about little things is one of the most beautiful things about you.</p>
-        </article>
-        <article class="signal" data-signal>
-          <span>03</span>
-          <h2>The afterglow signal</h2>
-          <p>Even after we stop talking, some part of my day still feels connected to you.</p>
-        </article>
+      <section class="wish-section" id="wishes" aria-label="Wish constellation">
+        <div class="section-heading">
+          <p class="eyebrow">Pick a star</p>
+          <h2>A few moments I would love to share with you</h2>
+        </div>
+        <div class="wish-constellation">
+          <button class="wish-star wish-star--one is-lit" type="button" data-wish="A slow walk where we forget to check the time.">
+            <span>Evening walk</span>
+          </button>
+          <button class="wish-star wish-star--two" type="button" data-wish="A coffee date where I learn the small things that make you happy.">
+            <span>Coffee talk</span>
+          </button>
+          <button class="wish-star wish-star--three" type="button" data-wish="A song that becomes ours because it played during a beautiful moment.">
+            <span>Our song</span>
+          </button>
+          <button class="wish-star wish-star--four" type="button" data-wish="A day when you smile and think, yes, he really means it.">
+            <span>Your smile</span>
+          </button>
+        </div>
+        <p class="wish-message" id="wishMessage">A slow walk where we forget to check the time.</p>
+      </section>
+
+      <section class="play-section" id="signals" aria-label="Playful moments">
+        <div class="play-phone">
+          <div class="play-header">
+            <p class="eyebrow">Tiny game</p>
+            <h2>Pick your blush level</h2>
+          </div>
+          <div class="play-grid">
+            <button class="play-tile" type="button" data-play="Careful. One smile from you and my whole day starts acting dramatic.">
+              <span>Soft</span>
+              A little smile
+            </button>
+            <button class="play-tile is-picked" type="button" data-play="Official report: you are dangerously cute and this page has no defense system.">
+              <span>Cute</span>
+              Blush warning
+            </button>
+            <button class="play-tile" type="button" data-play="If being unforgettable was a talent, you would be showing off without even trying.">
+              <span>Full</span>
+              Maximum charm
+            </button>
+          </div>
+          <p class="play-result" id="playResult">Official report: you are dangerously cute and this page has no defense system.</p>
+        </div>
       </section>
 
       <section class="proposal" id="proposal" aria-label="Date proposal">
         <div class="proposal__inner">
           <p class="eyebrow">Final transmission</p>
           <h2>Will you go on a date with me?</h2>
-          <p>
-            One evening. One real conversation. One chance for me to make you smile in person.
-          </p>
+          <p>One evening. One real conversation. One chance for me to make you smile in person.</p>
+
+          <div class="date-ideas" aria-label="Date choices">
+            <button type="button" data-date-idea="A quiet coffee date, where I get to know your favorite stories.">Coffee</button>
+            <button type="button" data-date-idea="A walk under soft lights, no rush, just us talking.">Walk</button>
+            <button type="button" data-date-idea="Dinner somewhere warm, with your favorite dessert at the end.">Dinner</button>
+          </div>
+          <p class="date-choice" id="dateChoice">Choose the date mood you would like most.</p>
 
           <div class="date-pad" id="datePad">
             <button class="yes-button" id="yesBtn" type="button">Yes</button>
             <button class="no-button" id="noBtn" type="button">No</button>
           </div>
 
-          <p class="answer" id="dateAnswer" hidden>
-            Then it is official. I am already smiling.
-          </p>
+          <p class="answer" id="dateAnswer" hidden>Then it is official. I am already smiling.</p>
         </div>
       </section>
     </main>
 
     <nav class="mobile-nav" aria-label="App navigation">
       <a href="#home" aria-label="Home">
-        <span>♥</span>
+        <span>&hearts;</span>
         Home
       </a>
+      <a href="#wishes" aria-label="Wish constellation">
+        <span>&#10022;</span>
+        Stars
+      </a>
       <a href="#signals" aria-label="Signals">
-        <span>✦</span>
-        Why
+        <span>&#9993;</span>
+        Play
       </a>
       <a href="#proposal" aria-label="Date proposal">
-        <span>♡</span>
+        <span>&#9825;</span>
         Date
       </a>
     </nav>
