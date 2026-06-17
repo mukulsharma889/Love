@@ -1,0 +1,17 @@
+{
+  "name": "A Little Universe For You",
+  "short_name": "For You",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#15030c",
+  "theme_color": "#ff2f75",
+  "description": "A romantic interactive mobile experience.",
+  "icons": [
+    {
+      "src": "assets/romantic-terrace.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

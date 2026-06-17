@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ff2f75" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="For You" />
+    <title>A Little Universe For You</title>
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="skyCanvas" aria-hidden="true"></canvas>
+
+    <main class="experience">
+      <section class="scene" id="home" aria-label="Personal love experience">
+        <div class="scene__image" aria-hidden="true"></div>
+        <div class="scene__veil" aria-hidden="true"></div>
+
+        <div class="topbar">
+          <span>made with courage</span>
+          <span>for one person only</span>
+        </div>
+
+        <div class="stage">
+          <div class="heart-system" aria-hidden="true">
+            <div class="orbit orbit--one">
+              <span></span>
+            </div>
+            <div class="orbit orbit--two">
+              <span></span>
+            </div>
+            <div class="orbit orbit--three">
+              <span></span>
+            </div>
+            <button class="heart-core" id="heartCore" type="button" aria-label="Send love pulse">
+              <span>♥</span>
+            </button>
+          </div>
+
+          <div class="message-panel">
+            <p class="eyebrow">A tiny universe, secretly built for</p>
+            <h1 id="headline">Someone I really like</h1>
+            <p class="lead">
+              I did not want to send a normal message. So I made a little place where every light, every pulse,
+              and every word is trying to say the same thing: you are special to me.
+            </p>
+
+            <form class="name-form" id="nameForm">
+              <label for="nameInput">Write her name here</label>
+              <div>
+                <input id="nameInput" type="text" maxlength="24" placeholder="Her name" autocomplete="off" />
+                <button type="submit">Personalize</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="signals" id="signals" aria-label="Things that make her special">
+        <article class="signal is-active" data-signal>
+          <span>01</span>
+          <h2>The smile signal</h2>
+          <p>Your smile has a way of making everything around it feel warmer.</p>
+        </article>
+        <article class="signal" data-signal>
+          <span>02</span>
+          <h2>The kindness signal</h2>
+          <p>The way you care about little things is one of the most beautiful things about you.</p>
+        </article>
+        <article class="signal" data-signal>
+          <span>03</span>
+          <h2>The afterglow signal</h2>
+          <p>Even after we stop talking, some part of my day still feels connected to you.</p>
+        </article>
+      </section>
+
+      <section class="proposal" id="proposal" aria-label="Date proposal">
+        <div class="proposal__inner">
+          <p class="eyebrow">Final transmission</p>
+          <h2>Will you go on a date with me?</h2>
+          <p>
+            One evening. One real conversation. One chance for me to make you smile in person.
+          </p>
+
+          <div class="date-pad" id="datePad">
+            <button class="yes-button" id="yesBtn" type="button">Yes</button>
+            <button class="no-button" id="noBtn" type="button">No</button>
+          </div>
+
+          <p class="answer" id="dateAnswer" hidden>
+            Then it is official. I am already smiling.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="mobile-nav" aria-label="App navigation">
+      <a href="#home" aria-label="Home">
+        <span>♥</span>
+        Home
+      </a>
+      <a href="#signals" aria-label="Signals">
+        <span>✦</span>
+        Why
+      </a>
+      <a href="#proposal" aria-label="Date proposal">
+        <span>♡</span>
+        Date
+      </a>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>
